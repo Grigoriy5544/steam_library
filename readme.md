@@ -2,17 +2,19 @@
 
 ## Installation
 
+Create a file in the `backend` directory .env by template .env.example
+
 ```
 cd ./frontend
 npm install
+npm run start
 ```
 
 ```
 cd ./backend
 npm install
+npm run start
 ```
-
-Create a file in the `backend` directory .env by template .env.example
 
 ## Technologies
 
