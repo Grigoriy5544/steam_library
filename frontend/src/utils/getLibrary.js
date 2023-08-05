@@ -1,10 +1,8 @@
+import axios from 'axios'
+
 export async function getLibrary(steam_id) {
-	const data = await fetch(
-		`http://localhost:5000/api/getLibrary?steam_id=${steam_id}`,
-		{
-			mode: 'cors',
-		}
+	const { data } = await axios.get(
+		`${process.env.REACT_APP_API_URL}/api/getLibrary?steam_id=${steam_id}`
 	)
-	const res = await data.json()
-	return res
+	return data
 }

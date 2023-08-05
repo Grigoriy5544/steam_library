@@ -64,7 +64,7 @@ app.get('/api/getUserInfo', async (req, res) => {
 	res.send(userInfo)
 })
 
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {
 	console.log('server started on port:', PORT)
