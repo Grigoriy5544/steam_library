@@ -1,0 +1,32 @@
+.header {
+  grid-area: header;
+  padding: 0 25px;
+  background-color: #181c24;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.user {
+  padding: 8px;
+  background-color: #272d37;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: none;
+  border-radius: 2px;
+}
+
+.user_name {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.image {
+  cursor: pointer;
+}

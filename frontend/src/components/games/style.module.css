@@ -1,0 +1,49 @@
+.games {
+  grid-area: sidebar;
+  padding: 8px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #252930;
+}
+
+.games::-webkit-scrollbar {
+  width: 6px;
+}
+
+.games::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+.games::-webkit-scrollbar-thumb {
+  background-color: #606774;
+  border-radius: 100px;
+}
+
+.card {
+  width: 225px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* overflow: hidden; */
+}
+
+.image {
+  width: 25px;
+}
+
+.text {
+  text-align: center;
+  font-size: 15px;
+}
+
+.name {
+  font-size: 14px;
+  white-space: nowrap;
+}

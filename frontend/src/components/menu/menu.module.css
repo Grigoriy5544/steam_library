@@ -1,0 +1,39 @@
+.Menu {
+  display: grid;
+  grid-template-areas: 
+    "header header header header header header header"
+    "sidebar content content content content content content";
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  grid-area: content;
+  background-color: #30343c;
+}
+
+.error {
+  margin: 30vh auto;
+  padding: 25px 50px;
+  background-color: #181c24;
+  width: 500px;
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.button {
+  margin: 0 auto;
+  padding: 12px;
+  width: 270px;
+  background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+  border: none;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.title {
+  font-size: 32px;
+}
