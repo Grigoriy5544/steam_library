@@ -4,6 +4,12 @@ require('dotenv').config()
 
 const app = express()
 
+app.use(
+	cors({
+		origin: '*',
+	})
+)
+
 app.get('/api/getLibrary', async (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*')
 	async function getLibrary() {
