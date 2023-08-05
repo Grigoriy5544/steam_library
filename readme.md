@@ -12,7 +12,7 @@ cd ./backend
 npm install
 ```
 
-В директории `backend` создайте файл .env по шаблону .env.example
+Create a file in the `backend` directory .env by template .env.example
 
 ## Technologies
 
