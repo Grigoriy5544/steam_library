@@ -10,6 +10,10 @@ app.use(
 	})
 )
 
+app.get('/', (req, res) => {
+	res.redirect('https://steam-library.vercel.app/')
+})
+
 app.get('/api/getLibrary', async (req, res) => {
 	res.set('Access-Control-Allow-Origin', '*')
 	async function getLibrary() {
@@ -100,6 +104,11 @@ app.get('/api/getRecentlyPlayedGames', async (req, res) => {
 	const games = await getRecentlyPlayedGames()
 
 	res.send(games)
+})
+
+app.get('/*', (req, res) => {
+	res.status(404)
+	res.send('Not Found')
 })
 
 const PORT = process.env.PORT || 5000
