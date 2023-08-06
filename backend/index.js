@@ -44,7 +44,10 @@ app.get('/api/getUserInfo', async (req, res) => {
 				`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_API_KEY}&steamids=${req.query.steamid}&include_appinfo=true`
 			)
 			const lvl = await fetch(
-				`https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steamid}&include_appinfo=true`
+				`https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steamid}`
+			)
+			console.log(
+				`https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steamid}`
 			)
 			const status_code = data.status
 			const status_codeLvl = lvl.status
