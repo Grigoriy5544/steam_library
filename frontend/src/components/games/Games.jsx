@@ -11,7 +11,7 @@ const runGame = appid => {
 export const Games = ({games}) => {
   return ((
       <div className={styles.games}>
-      {games ? games.map((game, key) => (
+      {games ? games.map(game => (
         <div key={game.appid} className={styles.card} 
         onClick={() => runGame(game.appid)}>
           <img src={`https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`} alt={game.name} className={styles.image}/>

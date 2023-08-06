@@ -3,6 +3,7 @@ import { Games } from '../games/Games'
 import styles from "./menu.module.css"
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import { Header } from '../header/Header'
+import { Content } from '../content/Content'
 
 export const Menu = ({library}) => {
   const [steamId, setSteamId] = useLocalStorage('steam_id', '')
@@ -12,7 +13,7 @@ export const Menu = ({library}) => {
       <div className={styles.Menu}>
         <Header/>
         <Games games={library.games} className={styles.sidebar}/>
-        <div className={styles.content}>Steam Library copy</div>
+        <Content/>
       </div>
      : (
       <div className={styles.error}>

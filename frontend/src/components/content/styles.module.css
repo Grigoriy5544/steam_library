@@ -1,0 +1,28 @@
+.content {
+  padding: 0 25px;
+  grid-area: content;
+  background-color: #30343c;
+}
+
+.title {
+  padding: 20px 0;
+  font-size: 25px;
+}
+
+.games {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+.card {
+  width: 200px;
+}
+
+.card__name {
+  text-align: center;
+  font-size: 14px;
+}
+
+.card__image {
+  width: 200px;
+}

@@ -8,11 +8,6 @@
   overflow: hidden;
 }
 
-.content {
-  grid-area: content;
-  background-color: #30343c;
-}
-
 .error {
   margin: 30vh auto;
   padding: 25px 50px;
