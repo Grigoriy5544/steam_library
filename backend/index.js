@@ -15,7 +15,7 @@ app.get('/api/getLibrary', async (req, res) => {
 	async function getLibrary() {
 		try {
 			const data = await fetch(
-				`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steam_id}&include_appinfo=true`
+				`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steamid}&include_appinfo=true`
 			)
 			const status_code = data.status
 			if (status_code !== 200) {
@@ -76,7 +76,9 @@ app.get('/api/getRecentlyPlayedGames', async (req, res) => {
 	async function getRecentlyPlayedGames() {
 		try {
 			const data = await fetch(
-				`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steamid}&count=${req.query.count}`
+				`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${
+					process.env.STEAM_API_KEY
+				}&steamid=${req.query.steamid}&count=${req.query.count || 0}`
 			)
 			const status_code = data.status
 			if (status_code !== 200) {
