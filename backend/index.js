@@ -41,10 +41,10 @@ app.get('/api/getUserInfo', async (req, res) => {
 	async function getUserInfo() {
 		try {
 			const data = await fetch(
-				`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_API_KEY}&steamids=${req.query.steam_id}&include_appinfo=true`
+				`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_API_KEY}&steamids=${req.query.steamid}&include_appinfo=true`
 			)
 			const lvl = await fetch(
-				`https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steam_id}&include_appinfo=true`
+				`https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steamid}&include_appinfo=true`
 			)
 			const status_code = data.status
 			const status_codeLvl = lvl.status
@@ -68,6 +68,33 @@ app.get('/api/getUserInfo', async (req, res) => {
 	const userInfo = await getUserInfo()
 
 	res.send(userInfo)
+})
+
+app.get('/api/getRecentlyPlayedGames', async (req, res) => {
+	res.set('Access-Control-Allow-Origin', '*')
+
+	async function getRecentlyPlayedGames() {
+		try {
+			const data = await fetch(
+				`https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v1/?key=${process.env.STEAM_API_KEY}&steamid=${req.query.steamid}&count=${req.query.count}`
+			)
+			const status_code = data.status
+			if (status_code !== 200) {
+				return {
+					error: status_code,
+				}
+			}
+			const res = await data.json()
+			if (res.response) return res.response
+		} catch (error) {
+			return {
+				error: error,
+			}
+		}
+	}
+	const games = await getRecentlyPlayedGames()
+
+	res.send(games)
 })
 
 const PORT = process.env.PORT || 5000
