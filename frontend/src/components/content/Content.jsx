@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { getRecentlyGames } from '../../utils/getRecentlyGames'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import styles from './styles.module.css'
+import runGame from '../../utils/runGame'
 
 const roundTime = time => {
   if (time >= 60) return `${(time / 60).toFixed(1)} ч.`
@@ -30,7 +31,7 @@ export const Content = () => {
       <h3 className={styles.title}>Недавние игры</h3>
       <div className={styles.games}>
         {games && games.map(game => (
-          <div className={styles.card}>
+          <div className={styles.card} onClick={() => runGame(game.appid)}>
             <div className={styles.front}>
               <img src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/hero_capsule.jpg`} alt={game.name} className={styles.card__image}/>
             </div>
