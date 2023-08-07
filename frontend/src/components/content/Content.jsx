@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getRecentlyGames } from '../../utils/getRecentlyGames'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import styles from './styles.module.css'
-import runGame from '../../utils/runGame'
+import { runGame } from '../../utils/runGame'
 
 const roundTime = time => {
   if (time >= 60) return `${(time / 60).toFixed(1)} ч.`
