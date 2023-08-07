@@ -16,7 +16,6 @@ export const Games = ({games}) => {
         onClick={() => runGame(game.appid)}>
           <img src={`https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`} alt={game.name} className={styles.image}/>
           <p key={game.appid} className={styles.name}>{game.name}</p>
-          {/* <p className={styles.text}> Сыграно {Math.round(game.playtime_forever / 60)} ч.</p> */}
         </div>
       )) : <p className={styles.name}>У вас нет игр</p>}
     </div>
