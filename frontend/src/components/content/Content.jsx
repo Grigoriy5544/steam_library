@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { getRecentlyGames } from '../../utils/getRecentlyGames'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import styles from './styles.module.css'
 import { runGame } from '../../utils/runGame'
@@ -26,7 +25,12 @@ export const Content = () => {
         {games && games.map(game => (
           <div className={styles.card} onClick={() => runGame(game.appid)}>
             <div className={styles.front}>
-              <img src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/hero_capsule.jpg`} alt={game.name} className={styles.card__image}/>
+              <img 
+                src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/hero_capsule.jpg`} 
+                alt={game.name} onError={({ currentTarget }) => {
+                currentTarget.onerror = null
+                currentTarget.src="/game-hero.jpg"
+              }}/>
             </div>
             <div className={styles.back}>
               <div className={styles.back__content}>
