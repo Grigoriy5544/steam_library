@@ -1,10 +1,20 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import styles from './style.module.css'
 import { runGame } from '../../utils/runGame'
+import { useLibrary } from '../../hooks/useLibrary'
+import { useLocalStorage } from '../../utils/useLocalStorage'
 
-export const Games = ({games}) => {
+export const Games = () => {
+  const [steamId, setSteamId] = useLocalStorage('steam_id', '')
+  const { isLoading, data: library, isSuccess } = useLibrary(steamId)
+  const [games, setGames] = useState([])
+  useEffect(() => {
+    if (isSuccess) setGames(library.games)
+  }, [isLoading])
+
+
   return ((
-      <div className={styles.games}>
+    <div className={styles.games}>
       {games ? games.map(game => (
         <div key={game.appid} className={styles.card} 
         onClick={() => runGame(game.appid)}>

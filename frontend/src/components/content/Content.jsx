@@ -3,6 +3,7 @@ import { getRecentlyGames } from '../../utils/getRecentlyGames'
 import { useLocalStorage } from '../../utils/useLocalStorage'
 import styles from './styles.module.css'
 import { runGame } from '../../utils/runGame'
+import { useRecentlyGames } from '../../hooks/useRecentlyGames'
 
 const roundTime = time => {
   if (time >= 60) return `${(time / 60).toFixed(1)} ч.`
@@ -11,21 +12,13 @@ const roundTime = time => {
 
 export const Content = () => {
   const [steamId, setSteamId] = useLocalStorage('steam_id', '')
+  const { isLoading, data: gamesData, isSuccess } = useRecentlyGames(steamId, 5)
   const [games, setGames] = useState([])
-  const getApi = async () => {
-		const data = await getRecentlyGames(steamId, 5)
-		if (data.error) {
-			setGames({
-				error: data.error,
-			})
-		} else setGames(data.games)
-	}
 
   useEffect(() => {
-		if (Number(steamId)) {
-			getApi()
-		}
-	}, [steamId])
+    if (isSuccess) setGames(gamesData.games)
+  }, [isLoading])
+
   return (
     <div className={styles.content}>
       <h3 className={styles.title}>Недавние игры</h3>
